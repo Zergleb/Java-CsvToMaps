@@ -22,5 +22,5 @@ This is not hosted on maven central I just use https://jitpack.io/ for hosting.
 
     maven { url "https://jitpack.io" }
   
-    compile 'com.github.Zergleb:Java-CsvToMaps:0.1.0'
+    compile 'com.github.Zergleb:Java-CsvToMaps:0.1.0' // You can see the releases in the releases tab.
 
