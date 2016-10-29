@@ -17,6 +17,11 @@ Tool to take csv files read them in and turn each row in to a map where the attr
     		assertEquals("two", maps.get(0).get("second"));
     	}
     }
+    
+test1.csv
+
+    first,second
+    one,two
 
 This is not hosted on maven central I just use https://jitpack.io/ for hosting.
 
