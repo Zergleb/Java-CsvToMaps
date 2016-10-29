@@ -20,7 +20,7 @@ public class CSVToMaps implements Closeable {
 		this.csvReader = csvReader;
 	}
 	
-	public List<Map<String, String>> parseCsv(Reader csvData) throws IOException {
+	public List<Map<String, String>> parseCsv() throws IOException {
 		try(CSVToMaps thingy = this) {
 			Iterator<String[]> valuesIterator = csvReader.iterator();
 			
