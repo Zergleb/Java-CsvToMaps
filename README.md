@@ -4,6 +4,7 @@ Tool to take csv files read them in and turn each row in to a map where the attr
 # Example
 
     public CSVReader getCSVReader(String file) {
+    	//CSVReader is a tool from http://opencsv.sourceforge.net/ it's a tool that parses CSV files my tool simply converts them to a list of maps.
         return new CSVReader(new InputStreamReader(CSVToMapsTest.class.getResourceAsStream(file)));
     }
 	
