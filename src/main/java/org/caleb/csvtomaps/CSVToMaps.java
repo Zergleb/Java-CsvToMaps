@@ -44,6 +44,17 @@ public class CSVToMaps implements Closeable {
 		} 
 	}
 
+	public String[] getHeaders() throws IOException {
+		try (CSVToMaps thingy = this) {
+			Iterator<String[]> valuesIterator = csvReader.iterator();
+
+			String[] keys;
+			if(valuesIterator.hasNext() == false) throw new IOException("Could not parse as a CSV file because the file was empty");
+			else keys = valuesIterator.next();
+			return keys;
+		}
+	}
+
 	@Override
 	public void close() throws IOException {
 		csvReader.close();
