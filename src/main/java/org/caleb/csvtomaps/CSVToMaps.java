@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +31,7 @@ public class CSVToMaps implements Closeable {
 			
 			List<Map<String, String>> maps = new ArrayList<Map<String, String>>();
 			valuesIterator.forEachRemaining((String[] item) -> {
-				Map<String, String> map = new HashMap<String, String>();
+				Map<String, String> map = new LinkedHashMap<String, String>();
 				for(int i = 0; i < keys.length; i++) {
 					if(i >= item.length) {
 						map.put(keys[i], "");
@@ -42,17 +43,6 @@ public class CSVToMaps implements Closeable {
 			});
 			return maps;
 		} 
-	}
-
-	public String[] getHeaders() throws IOException {
-		try (CSVToMaps thingy = this) {
-			Iterator<String[]> valuesIterator = csvReader.iterator();
-
-			String[] keys;
-			if(valuesIterator.hasNext() == false) throw new IOException("Could not parse as a CSV file because the file was empty");
-			else keys = valuesIterator.next();
-			return keys;
-		}
 	}
 
 	@Override

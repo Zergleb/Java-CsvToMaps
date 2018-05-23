@@ -3,8 +3,7 @@ package org.caleb.csvtomaps;
 import static org.junit.Assert.*;
 
 import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -29,12 +28,16 @@ public class CSVToMapsTest {
 	@Test
 	public void headersTest() throws Throwable {
 		try(CSVToMaps csvToMaps = new CSVToMaps(getCSVReader("test2.csv"))) {
-			String[] headers = csvToMaps.getHeaders();
-			assertEquals("header1", headers[0]);
-			assertEquals("header2", headers[1]);
-			assertEquals("header3", headers[2]);
-			assertEquals("header,4", headers[3]);
-			assertEquals("header5", headers[4]);
+			List<Map<String, String>> maps = csvToMaps.parseCsv();
+			Map<String, String> row = maps.get(0);
+			List<String> parsedList = new ArrayList<>(row.keySet());
+			List<String> expectedList = new ArrayList<>();
+			expectedList.add("header1");
+			expectedList.add("header2");
+			expectedList.add("header3");
+			expectedList.add("header,4");
+			expectedList.add("header5");
+			assertEquals(expectedList, parsedList);
 		}
 	}
 }
